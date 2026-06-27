@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kiprono Benson</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0e0e0c;
+    --ink-2: #3a3a36;
+    --ink-3: #7a7a74;
+    --paper: #f9f7f3;
+    --paper-2: #f0ece4;
+    --gold: #b89a5a;
+    --gold-light: #e8dfc8;
+    --white: #ffffff;
+    --rule: rgba(14,14,12,0.12);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 3rem;
+    height: 72px;
+    background: rgba(249,247,243,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--rule);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--gold); }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-cta {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: var(--ink);
+    background: transparent;
+    border: 1px solid var(--ink);
+    padding: 0.55rem 1.5rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .nav-cta:hover { background: var(--ink); color: var(--white); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 72px;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem 4rem 6rem 3rem;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 2.5rem;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    font-weight: 700;
+    line-height: 1.07;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 2rem;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-sub {
+    font-size: 1.0625rem;
+    color: var(--ink-2);
+    line-height: 1.7;
+    max-width: 38ch;
+    margin-bottom: 3rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .btn-primary {
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--white);
+    background: var(--ink);
+    border: 1px solid var(--ink);
+    padding: 0.85rem 2.25rem;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+    cursor: pointer;
+  }
+
+  .btn-primary:hover { background: var(--gold); border-color: var(--gold); }
+
+  .btn-ghost {
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--ink-2);
+    background: transparent;
+    border: none;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+
+  .btn-ghost:hover { color: var(--gold); }
+
+  .btn-ghost::after { content: '→'; font-size: 1.1em; }
+
+  .hero-right {
+    position: relative;
+    overflow: hidden;
+    background: var(--ink);
+  }
+
+  .hero-image-area {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #1a1a16 0%, #2d2a22 50%, #1a1a16 100%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding: 3rem;
+  }
+
+  .hero-stat-block {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .hero-stat {
+    border-left: 2px solid var(--gold);
+    padding-left: 1.25rem;
+  }
+
+  .hero-stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  .hero-stat-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-top: 0.25rem;
+  }
+
+  /* Abstract geometric overlay */
+  .hero-geo {
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .hero-geo svg {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 140%;
+    opacity: 0.06;
+  }
+
+  /* MARQUEE STRIP */
+  .marquee-strip {
+    border-top: 0.5px solid var(--rule);
+    border-bottom: 0.5px solid var(--rule);
+    background: var(--paper-2);
+    overflow: hidden;
+    padding: 1rem 0;
+  }
+
+  .marquee-inner {
+    display: flex;
+    gap: 4rem;
+    white-space: nowrap;
+    animation: marquee 28s linear infinite;
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .marquee-item {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .marquee-item::before {
+    content: '✦';
+    color: var(--gold);
+    font-size: 0.6em;
+  }
+
+  /* SECTION SCAFFOLDING */
+  section { padding: 7rem 3rem; }
+
+  .section-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 700;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    max-width: 18ch;
+  }
+
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  /* ABOUT / PHILOSOPHY */
+  .about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .about-body {
+    font-size: 1rem;
+    color: var(--ink-2);
+    line-height: 1.8;
+    margin-top: 1.75rem;
+    max-width: 45ch;
+  }
+
+  .about-right {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5px;
+    background: var(--rule);
+  }
+
+  .about-cell {
+    background: var(--paper);
+    padding: 2.25rem 2rem;
+  }
+
+  .about-cell-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .about-cell-number span { font-size: 1.5rem; color: var(--gold); }
+
+  .about-cell-label {
+    font-size: 0.8rem;
+    color: var(--ink-3);
+    line-height: 1.5;
+  }
+
+  /* SERVICES */
+  #services { background: var(--ink); padding: 7rem 3rem; }
+
+  .services-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    max-width: 1200px;
+    margin: 0 auto 4rem;
+  }
+
+  #services .section-label { color: var(--gold); }
+  #services .section-title { color: var(--white); }
+
+  .services-link {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.45);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.2s;
+  }
+
+  .services-link:hover { color: var(--gold); }
+  .services-link::after { content: '→'; }
+
+  .services-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: rgba(255,255,255,0.08);
+  }
+
+  .service-card {
+    background: var(--ink);
+    padding: 3rem 2.5rem;
+    border: 0.5px solid rgba(255,255,255,0.07);
+    transition: background 0.25s;
+    cursor: default;
+  }
+
+  .service-card:hover { background: #1c1c17; }
+
+  .service-number {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    margin-bottom: 2rem;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .service-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-bottom: 1.5rem;
+    opacity: 0.7;
+  }
+
+  .service-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 1rem;
+    line-height: 1.25;
+  }
+
+  .service-desc {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.75;
+  }
+
+  .service-arrow {
+    margin-top: 2.5rem;
+    color: var(--gold);
+    font-size: 1.25rem;
+    opacity: 0;
+    transition: opacity 0.2s, transform 0.2s;
+    transform: translateX(-4px);
+  }
+
+  .service-card:hover .service-arrow {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* CASE STUDIES */
+  .cases-header {
+    max-width: 1200px;
+    margin: 0 auto 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .cases-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 5fr 3fr;
+    gap: 1.5px;
+    background: var(--rule);
+  }
+
+  .case-card {
+    background: var(--paper);
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .case-card.featured { padding: 3.5rem; }
+
+  .case-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: var(--gold-light);
+    color: #7a6030;
+    padding: 0.3rem 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .case-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.625rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .case-body {
+    font-size: 0.9rem;
+    color: var(--ink-2);
+    line-height: 1.75;
+    max-width: 50ch;
+    margin-bottom: 2rem;
+  }
+
+  .case-result {
+    display: flex;
+    gap: 2.5rem;
+    padding-top: 2rem;
+    border-top: 0.5px solid var(--rule);
+  }
+
+  .case-metric-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1;
+  }
+
+  .case-metric-label {
+    font-size: 0.75rem;
+    color: var(--ink-3);
+    margin-top: 0.25rem;
+  }
+
+  .case-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5px;
+  }
+
+  .case-small {
+    background: var(--paper);
+    padding: 2.25rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .case-small-sector {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: 0.75rem;
+  }
+
+  .case-small-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+
+  .case-small-stat {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  /* TESTIMONIAL */
+  .testimonial-section {
+    background: var(--paper-2);
+    text-align: center;
+  }
+
+  .testimonial-wrap {
+    max-width: 740px;
+    margin: 0 auto;
+  }
+
+  .testimonial-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 2.5vw, 2.125rem);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.5;
+    margin-bottom: 2.5rem;
+  }
+
+  .testimonial-quote::before { content: '\201C'; color: var(--gold); }
+  .testimonial-quote::after { content: '\201D'; color: var(--gold); }
+
+  .testimonial-attr {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  .testimonial-attr strong {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--ink);
+    margin-bottom: 0.2rem;
+  }
+
+  /* TEAM */
+  .team-grid {
+    max-width: 1200px;
+    margin: 4rem auto 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+
+  .team-card { text-align: left; }
+
+  .team-avatar {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: var(--paper-2);
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .team-avatar-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--ink-3);
+  }
+
+  .team-avatar-stripe {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--gold);
+  }
+
+  .team-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.2rem;
+  }
+
+  .team-role {
+    font-size: 0.8rem;
+    color: var(--ink-3);
+    margin-bottom: 0.75rem;
+  }
+
+  .team-linkedin {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 0.5px solid var(--gold);
+    padding-bottom: 1px;
+  }
+
+  /* CTA STRIP */
+  .cta-section {
+    background: var(--ink);
+    padding: 8rem 3rem;
+    text-align: center;
+  }
+
+  .cta-section .section-label { color: var(--gold); }
+
+  .cta-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 4vw, 3.75rem);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.1;
+    margin: 1rem 0 2.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .cta-title em { font-style: italic; color: var(--gold); }
+
+  .cta-sub {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.45);
+    max-width: 45ch;
+    margin: 0 auto 3rem;
+    line-height: 1.7;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink);
+    background: var(--gold);
+    border: 1px solid var(--gold);
+    padding: 1.1rem 3rem;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+    cursor: pointer;
+  }
+
+  .cta-btn:hover { background: transparent; color: var(--gold); }
+
+  /* FOOTER */
+  footer {
+    background: #09090700;
+    background: #09090a;
+    padding: 4rem 3rem 2.5rem;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 0.5px solid rgba(255,255,255,0.1);
+  }
+
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 1rem;
+  }
+
+  .footer-brand span { color: var(--gold); }
+
+  .footer-tagline {
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.7;
+    max-width: 28ch;
+  }
+
+  .footer-col-title {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 1.25rem;
+  }
+
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+  .footer-col a { font-size: 0.875rem; color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.2s; }
+  .footer-col a:hover { color: var(--gold); }
+
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.25);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-right { height: 60vw; }
+    .about { grid-template-columns: 1fr; gap: 3rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .cases-grid { grid-template-columns: 1fr; }
+    .case-stack { flex-direction: row; }
+    .team-grid { grid-template-columns: 1fr 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+    nav { padding: 0 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 5rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Kiprono Benson<span>.</span></a>
+  <ul class="nav-links">
+    <!--li><a href="#about">Skills</a></li-->
+    <!--li><a href="#services">Experience</a></li-->
+    <!--li><a href="#work">Projects</a></li-->
+    <!--li><a href="#team">Education</a></li-->
+    <!--li><a href="#team">Education</a></li-->
+    <a href= "assets/download/kiprono.pdf" download > Download Resume</a>
+  </ul>
+  <a href="#contact" class="nav-cta">Get in touch</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding: 0;">
+  <div class="hero-left">
+    <!--p class="hero-eyebrow">Strategy & transformation</p-->
+    <h1>Cloud Solution Architect<br>and <em>DevSecOps</em><br>Engineer.</h1>
+    <p class="hero-sub">I specialize in designing, automating, and optimizing cloud infrastructure using AWS services, DevOps best practices, and data-driven approaches.</p>
+    <div class="hero-actions">
+      <a href="#work" class="btn-primary">View my work</a>
+      <a href="#about" class="btn-ghost">My approach</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-geo">
+      <svg viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="300" cy="300" r="250" stroke="white" stroke-width="0.5"/>
+        <circle cx="300" cy="300" r="180" stroke="white" stroke-width="0.5"/>
+        <circle cx="300" cy="300" r="110" stroke="white" stroke-width="0.5"/>
+        <line x1="50" y1="300" x2="550" y2="300" stroke="white" stroke-width="0.5"/>
+        <line x1="300" y1="50" x2="300" y2="550" stroke="white" stroke-width="0.5"/>
+        <line x1="123" y1="123" x2="477" y2="477" stroke="white" stroke-width="0.5"/>
+        <line x1="477" y1="123" x2="123" y2="477" stroke="white" stroke-width="0.5"/>
+      </svg>
+    </div>
+    <div class="hero-image-area">
+      <div class="hero-stat-block">
+        <div class="hero-stat">
+          <div class="hero-stat-number">94%</div>
+          <div class="hero-stat-label">Client Retention Rate</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-number">Ksh 2.4B</div>
+          <div class="hero-stat-label">Value created for clients</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-number">100</div>
+          <div class="hero-stat-label">Projects Completed</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip">
+  <div class="marquee-inner">
+    <span class="marquee-item">Cloud Computing</span>
+    <span class="marquee-item">Cloud-Native Solutions</span>
+    <span class="marquee-item">Scalable Infrastructure</span>
+    <span class="marquee-item">Cloud Migration Advisory</span>
+    <span class="marquee-item">Cloud Design</span>
+    <span class="marquee-item">Digital Acceleration</span>
+    <span class="marquee-item">Cloud Computing Strategy</span>
+    <span class="marquee-item">Growth Architecture</span>
+    <!-- duplicate for seamless loop -->
+    <span class="marquee-item">Cloud Computing</span>
+    <span class="marquee-item">Cloud-Native Solutions</span>
+    <span class="marquee-item">Scalable Infrastructure</span>
+    <span class="marquee-item">Cloud Migration Advisory</span>
+    <span class="marquee-item">Cloud Design</span>
+    <span class="marquee-item">Digital Acceleration</span>
+    <span class="marquee-item">Cloud Computing Strategy</span>
+    <span class="marquee-item">Growth Architecture</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about">
+    <div class="about-left">
+      <p class="section-label">My philosophy</p>
+      <h2 class="section-title">Rigorous thinking, <br><em>Real</em> results.</h2>
+      <p class="about-body">I believe that the best strategy comes from deep listening, honest analysis, and the courage to say what needs to be said — even when it's uncomfortable. My engagements are purposefully small, ensuring my attention on every project.</p>
+      <p class="about-body" style="margin-top: 1rem;">I don't believe in frameworks applied generically. Every client's situation is distinct, and my advice reflects that.</p>
+    </div>
+    <div class="about-right">
+      <div class="about-cell">
+        <div class="about-cell-number">10<span>yr</span></div>
+        <div class="about-cell-label">Years of independent advisory practice</div>
+      </div>
+      <div class="about-cell" style="background: var(--gold-light);">
+        <div class="about-cell-number">340<span>+</span></div>
+        <div class="about-cell-label">Engagements completed across 12 industries</div>
+      </div>
+      <div class="about-cell" style="background: var(--paper-2);">
+        <div class="about-cell-number">4.8<span>★</span></div>
+        <div class="about-cell-label">Average client satisfaction score</div>
+      </div>
+      <div class="about-cell">
+        <div class="about-cell-number">36<span>%</span></div>
+        <div class="about-cell-label">Reduction in IT infrastructure cost</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-header">
+    <div>
+      <p class="section-label">What we do</p>
+      <h2 class="section-title">My core<br>practices</h2>
+    </div>
+    <a href="#contact" class="services-link">Start a conversation</a>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-number">01</div>
+      <h3 class="service-name">Cloud Migration & Infrastructure</h3>
+      <p class="service-desc">Seamlessly transition your systems to scalable cloud environments. We architect, migrate, and optimize infrastructure on AWS, Azure, and Google Cloud to reduce costs and improve resilience.</p>
+      <div class="service-arrow">→</div>
+    </div>
+    <div class="service-card">
+      <div class="service-number">02</div>
+      <h3 class="service-name">Data Analytics & Business Intelligence</h3>
+      <p class="service-desc">Turn raw data into strategic assets. We design analytics pipelines, dashboards, and reporting frameworks that give leadership clear visibility into performance and growth opportunity.</p>
+      <div class="service-arrow">→</div>
+    </div>
+    <div class="service-card">
+      <div class="service-number">03</div>
+      <h3 class="service-name">Operational Transformation</h3>
+      <p class="service-desc">Redesigning core processes and organizational structure to deliver sustainable efficiency gains without sacrificing capability.</p>
+      <div class="service-arrow">→</div>
+    </div>
+    <div class="service-card">
+      <div class="service-number">04</div>
+      <h3 class="service-name">Business Process Digitization</h3>
+      <p class="service-desc">Replace manual workflows with intelligent digital systems. We map, redesign, and automate core business processes to eliminate inefficiencies and accelerate throughput across the organization.</p>
+      <div class="service-arrow">→</div>
+    </div>
+    <div class="service-card">
+      <div class="service-number">05</div>
+      <h3 class="service-name">Digital Acceleration</h3>
+      <p class="service-desc">Ensure lasting adoption of new technologies and processes. We develop structured change programs, training curricula, and communication strategies that bring your people on the journey.</p>
+      <div class="service-arrow">→</div>
+    </div>
+    <div class="service-card">
+      <div class="service-number">06</div>
+      <h3 class="service-name">IT Security & Compliance</h3>
+      <p class="service-desc">Protect your digital infrastructure and meet regulatory requirements. We conduct security audits, implement controls, and build compliance frameworks for GDPR, ISO 27001, and SOC 2.</p>
+      <div class="service-arrow">→</div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section id="work" style="background: var(--paper);">
+  <div class="cases-header">
+    <div>
+      <p class="section-label">Selected work</p>
+      <h2 class="section-title">Recent<br>engagements</h2>
+    </div>
+    <a href="#contact" class="btn-ghost" style="text-decoration: none;">All case studies</a>
+  </div>
+  <div class="cases-grid">
+    <div class="case-card featured">
+      <span class="case-tag">Cloud Migration and Modernization</span>
+      <h3 class="case-title">Modernising enterprise infrastructure through a secure cloud migration programme</h3>
+      <p class="case-body">A leading enterprise engaged us to assess its legacy infrastructure, rationalise workloads, define a cloud adoption roadmap, and execute a phased migration strategy across multiple business units with minimal operational disruption.</p>
+      <div class="case-result">
+        <div>
+          <div class="case-metric-value">40%</div>
+          <div class="case-metric-label">Reduction in infrastructure costs</div>
+        </div>
+        <div>
+          <div class="case-metric-value">3months</div>
+          <div class="case-metric-label">Migration timeline completed (vs. 10mo forecast)</div>
+        </div>
+        <div>
+          <div class="case-metric-value">99.00%</div>
+          <div class="case-metric-label">Platform uptime achieved post-migration</div>
+        </div>
+      </div>
+    </div>
+    <div class="case-stack">
+      <div class="case-small">
+        <div>
+          <div class="case-small-sector">Cloud Optimisation</div>
+          <div class="case-small-title">Cost and performance reset for a multi-cloud environment facing rising spend</div>
+        </div>
+        <div class="case-small-stat">+28% efficiency</div>
+      </div>
+      <div class="case-small">
+        <div>
+          <div class="case-small-sector">Infrastructure Modernisation</div>
+          <div class="case-small-title">Data centre consolidation and hybrid cloud enablement for a regional enterprise</div>
+        </div>
+        <div class="case-small-stat">Ksh300M savings unlocked</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="testimonial-section">
+  <div class="testimonial-wrap">
+    <p class="section-label" style="text-align: center; margin-bottom: 2rem;">Client perspective</p>
+    <blockquote class="testimonial-quote">
+      Kiprono didn’t just deliver a migration roadmap — he worked alongside us through every infrastructure decision, challenged how we approached legacy systems and manual processes, and helped us build internal confidence before moving forward with cloud adoption and business process digitization.
+    </blockquote>
+    <div class="testimonial-attr">
+      <strong>Bekim</strong>
+      Chief Strategy Officer, BekimPoint Consulting Group
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+  <div style="max-width: 1200px; margin: 0 auto;">
+    <p class="section-label">The partners</p>
+    <h2 class="section-title">Advisors with<br><em>genuine</em> depth</h2>
+  </div>
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-avatar">
+        <div class="team-avatar-inner">KB</div>
+        <div class="team-avatar-stripe"></div>
+      </div>
+      <div class="team-name">Kiprono Benson</div>
+      <div class="team-role">Managing Partner</div>
+      <a href="#" class="team-linkedin">LinkedIn ↗</a>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar" style="background: #e8e3d8;">
+        <div class="team-avatar-inner">KB</div>
+        <div class="team-avatar-stripe"></div>
+      </div>
+      <div class="team-name">Kiprono Benson</div>
+      <div class="team-role">Managing Partner</div>
+      <a href="#" class="team-linkedin">LinkedIn ↗</a>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar" style="background: #dde4e0;">
+        <div class="team-avatar-inner">KB</div>
+        <div class="team-avatar-stripe"></div>
+      </div>
+      <div class="team-name">Kiprono Benson</div>
+      <div class="team-role">Managing Partner</div>
+      <a href="#" class="team-linkedin">LinkedIn ↗</a>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar" style="background: #e4dde8;">
+        <div class="team-avatar-inner">KB</div>
+        <div class="team-avatar-stripe"></div>
+      </div>
+      <div class="team-name">Kiprono Benson</div>
+      <div class="team-role">Managing Partner</div>
+      <a href="#" class="team-linkedin">LinkedIn ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <p class="section-label">Work with us</p>
+  <h2 class="cta-title">Ready to make a<br><em>decisive</em> move?</h2>
+  <p class="cta-sub">Most of my engagements begin with a 90-minute diagnostic conversation. No pitch, no templates — just an honest look at your situation.</p>
+  <a href="mailto:kkipronobenson@gmail.com" class="cta-btn">Request a conversation</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand">Kiprono Benson<span>.</span></div>
+      <p class="footer-tagline">Independent technology advisor helping organisations simplify complexity, modernise operations, and scale with confidence.</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Services</div>
+      <ul>
+        <li><a href="#">Cloud Infrastructure</a></li>
+        <li><a href="#">Business Process Digitization</a></li>
+	<li><a href="#">Operational Transformation</a></li>
+        <li><a href="#">IT Security & Compliance</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Firm</div>
+      <ul>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Team</a></li>
+        <li><a href="#">Case Studies</a></li>
+        <li><a href="#">Insights</a></li>
+        <li><a href="#">Careers</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Contact</div>
+      <ul>
+        <li><a href="#">Nairobi</a></li>
+        <li><a href="#">Mombasa</a></li>
+        <li><a href="#">Eldoret</a></li>
+        <!--li><a href="mailto:kkipronobenson@gmail.com">kkipronobenson@gmail.com</a></li-->
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Kiprono Benson</span>
+    <span>Privacy · Terms</span>
+  </div>
+</footer>
+
+</body>
+</html>
